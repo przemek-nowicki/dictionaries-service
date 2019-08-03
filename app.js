@@ -1,7 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const logger = require('morgan');
-//const api = require('./api');
+const api = require('./api');
 const app = express();
 const cors = require('cors');
 const bluebird = require('bluebird');
@@ -11,7 +11,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-//app.use('/api', api);
+app.use('/api', api);
 
 app.use(function(req, res, next) {
   const error = createError(404);
